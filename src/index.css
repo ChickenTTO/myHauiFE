@@ -1,0 +1,209 @@
+/* Brand Colors:
+   Primary Blue: #1e376f
+   Primary Red: #cd2026
+   Accent Yellow: #ffc300
+*/
+
+:root {
+  --haui-blue: #1e376f;
+  --haui-red: #cd2026;
+  --haui-yellow: #ffc300;
+  --bg-color: #f4f7f6;
+  --text-color: #333;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  width: 100%;
+  font-family: 'Arial', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.app-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.navbar {
+  background-color: var(--haui-blue);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-bottom: 4px solid var(--haui-red);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo {
+  height: 60px;
+  /* Add a white background to the logo if it's transparent and hard to see on blue */
+  background: white;
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.title-container h1 {
+  font-size: 1.2rem;
+  margin: 0;
+  text-transform: uppercase;
+  color: var(--haui-yellow);
+}
+
+.title-container h2 {
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 300;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.nav-links a:hover {
+  background-color: var(--haui-red);
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Important: The main container doesn't scroll, children do */
+}
+
+.welcome-section {
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  text-align: center;
+  max-width: 600px;
+}
+
+.welcome-section h2 {
+  color: var(--haui-blue);
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.welcome-section p {
+  color: #666;
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.btn {
+  padding: 10px 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.btn-primary {
+  background-color: var(--haui-red);
+  color: white;
+}
+
+.btn-secondary {
+  background-color: var(--haui-blue);
+  color: white;
+}
+
+/* ==================================================================== */
+/* RESPONSIVE DESIGN (MOBILE & TABLET)                                  */
+/* ==================================================================== */
+
+/* Container bọc bảng dữ liệu để cuộn ngang trên điện thoại */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Biểu đồ Dashboard chuyển 1 cột trên mobile */
+.dashboard-charts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 992px) {
+  .dashboard-charts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Ghi đè Layout chung trên Mobile */
+@media (max-width: 768px) {
+  .portal-header {
+    padding: 0 15px !important;
+    flex-direction: column;
+    height: auto !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    gap: 15px;
+  }
+
+  .portal-nav {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 5px;
+  }
+  
+  .portal-nav-links {
+    gap: 15px !important;
+    white-space: nowrap; /* Prevent wrapping so it scrolls horizontally */
+  }
+
+  .portal-user-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .portal-main-content {
+    padding: 15px !important;
+  }
+}

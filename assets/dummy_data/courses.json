@@ -1,0 +1,20 @@
+[
+  {
+    "course_id": "IT101",
+    "name": "Lập trình cơ bản",
+    "credits": 3,
+    "teacher": "TS. Phạm Văn D"
+  },
+  {
+    "course_id": "IT102",
+    "name": "Cấu trúc dữ liệu và giải thuật",
+    "credits": 4,
+    "teacher": "ThS. Hoàng Thị E"
+  },
+  {
+    "course_id": "ENG201",
+    "name": "Tiếng Anh chuyên ngành",
+    "credits": 2,
+    "teacher": "Cô Nguyễn Phước F"
+  }
+]
