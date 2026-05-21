@@ -1,0 +1,26 @@
+[
+  {
+    "id": "SV001",
+    "name": "Nguyễn Văn A",
+    "dob": "2002-05-10",
+    "major": "Công nghệ thông tin",
+    "class": "K15-CNTT1",
+    "gpa": 3.2
+  },
+  {
+    "id": "SV002",
+    "name": "Trần Thị B",
+    "dob": "2003-08-22",
+    "major": "Kế toán",
+    "class": "K16-KT1",
+    "gpa": 3.8
+  },
+  {
+    "id": "SV003",
+    "name": "Lê Văn C",
+    "dob": "2001-11-05",
+    "major": "Cơ khí",
+    "class": "K14-CK2",
+    "gpa": 2.9
+  }
+]
