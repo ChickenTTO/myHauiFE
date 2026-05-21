@@ -16,17 +16,17 @@ export default function ResearchDashboard() {
     const fetchDashboardData = async () => {
       try {
         // Fetch Assets stats
-        const assetRes = await axios.get('http://localhost:8080/api/assets');
+        const assetRes = await axios.get('/api/assets');
         const assets = assetRes.data;
         const broken = assets.filter((a: any) => a.status?.toLowerCase().includes('hỏng')).length;
 
         // Fetch Requests stats
-        const reqRes = await axios.get('http://localhost:8080/api/borrow-requests');
+        const reqRes = await axios.get('/api/borrow-requests');
         const requests = reqRes.data;
         const active = requests.filter((r: any) => r.status === 'APPROVED' || r.status === 'ACTIVE').length;
         
         // Fetch Reports
-        const repRes = await axios.get('http://localhost:8080/api/research-reports');
+        const repRes = await axios.get('/api/research-reports');
         const reps = repRes.data;
 
         setStats({

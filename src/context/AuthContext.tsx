@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       const token = localStorage.getItem('token');
       if (token) {
         try {
-          const response = await axios.get('http://localhost:8080/api/auth/me');
+          const response = await axios.get('/api/auth/me');
           setCurrentUser(response.data.user);
           setUserRole(response.data.user.role);
         } catch (error) {

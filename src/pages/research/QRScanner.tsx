@@ -42,7 +42,7 @@ export default function QRScanner() {
     setLoading(true);
     try {
       // Gửi trực tiếp base64 image (hoặc có thể bỏ qua image nếu backend không hỗ trợ)
-      await axios.post('http://localhost:8080/api/usage-logs', {
+      await axios.post('/api/usage-logs', {
         assetCode: scanResult,
         action: actionType,
         status: photoData ? 'REPORTED' : 'CLEAN',

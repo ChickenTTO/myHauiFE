@@ -9,7 +9,7 @@ export default function RoomLayout() {
   useEffect(() => {
     const fetchAssets = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/assets');
+        const response = await axios.get('/api/assets');
         const items = response.data;
         const regex = /(pc|laptop|máy tính|vi tính|máy chủ)/i;
         const computers = items.filter((item: any) => regex.test(item.assetName));

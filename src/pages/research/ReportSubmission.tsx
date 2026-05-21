@@ -16,7 +16,7 @@ export default function ReportSubmission() {
   useEffect(() => {
     const fetchRequests = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/borrow-requests/my-requests');
+        const response = await axios.get('/api/borrow-requests/my-requests');
         const myRequests = response.data;
         setActiveRequests(myRequests.filter((r: any) => ['APPROVED', 'ACTIVE', 'COMPLETED'].includes(r.status)));
       } catch (err) {
@@ -39,7 +39,7 @@ export default function ReportSubmission() {
 
     setLoading(true);
     try {
-      await axios.post('http://localhost:8080/api/research-reports', {
+      await axios.post('/api/research-reports', {
         requestId: formData.requestId,
         content: formData.title,
         fileUrl: formData.driveLink

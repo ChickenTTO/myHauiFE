@@ -13,7 +13,7 @@ export default function AuditLogs() {
 
   const fetchLogs = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/audit-logs');
+      const response = await axios.get('/api/audit-logs');
       setLogs(response.data);
     } catch (err) {
       console.error(err);
@@ -30,7 +30,7 @@ export default function AuditLogs() {
     if (!window.confirm("BẠN CÓ CHẮC CHẮN MUỐN XÓA TOÀN BỘ NHẬT KÝ HỆ THỐNG? (Hành động này không thể hoàn tác)")) return;
 
     try {
-      await axios.delete('http://localhost:8080/api/audit-logs/clear');
+      await axios.delete('/api/audit-logs/clear');
       setLogs([]);
       alert("Đã xóa toàn bộ nhật ký.");
     } catch (err: any) {

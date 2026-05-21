@@ -15,7 +15,7 @@ export default function AdminTimetable() {
 
   const fetchTimetables = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/timetables');
+      const response = await axios.get('/api/timetables');
       const rawData = response.data;
       
       const fetchedData: any = {};
@@ -110,7 +110,7 @@ export default function AdminTimetable() {
          phongHoc: cls.room || 'CHƯA_XẾP'
       }));
 
-      await axios.post('http://localhost:8080/api/timetables', formattedData);
+      await axios.post('/api/timetables', formattedData);
       
       alert(`✅ Đã lưu thành công dữ liệu cho ${weekKey}!`);
       fetchTimetables();
@@ -131,7 +131,7 @@ export default function AdminTimetable() {
     if (!window.confirm(`Bạn có chắc chắn muốn xóa vĩnh viễn dữ liệu ${weekKey}?`)) return;
     setLoading(true);
     try {
-      await axios.delete(`http://localhost:8080/api/timetables/${weekKey}`);
+      await axios.delete(`/api/timetables/${weekKey}`);
       
       const updated = { ...multiWeekData };
       delete updated[weekKey];

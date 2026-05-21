@@ -13,7 +13,7 @@ export default function StudentTimetable() {
   useEffect(() => {
     const fetchTimetables = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/timetables');
+        const response = await axios.get('/api/timetables');
         const rawData = response.data;
         
         // Group classes by tuanHoc

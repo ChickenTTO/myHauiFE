@@ -30,7 +30,7 @@ export default function ResearchBooking() {
   useEffect(() => {
     const checkActiveBorrows = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/borrow-requests/my-requests');
+        const response = await axios.get('/api/borrow-requests/my-requests');
         const myRequests = response.data;
         const active = myRequests.find((r: any) => ['PENDING_TEACHER', 'PENDING_TT', 'APPROVED', 'ACTIVE'].includes(r.status));
         if (active) {
@@ -41,7 +41,7 @@ export default function ResearchBooking() {
 
     const fetchAssets = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/assets');
+        const response = await axios.get('/api/assets');
         const assets = response.data;
         const regex = /(pc|laptop|máy tính|vi tính|máy chủ)/i;
         const computers = assets.filter((item: any) => regex.test(item.assetName));
@@ -53,7 +53,7 @@ export default function ResearchBooking() {
 
     const fetchTeachers = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/users');
+        const response = await axios.get('/api/users');
         const allUsers = response.data;
         setTeachers(allUsers.filter((u: any) => u.role === 'TEACHER'));
       } catch (e) { console.error(e); }
@@ -106,7 +106,7 @@ export default function ResearchBooking() {
     setLoading(true);
     try {
       // Logic kiểm tra Xung đột tài nguyên (Conflict Resolution)
-      const res = await axios.get('http://localhost:8080/api/borrow-requests'); // In a real app we'd fetch all requests if we have permission, or have a specific API. We'll simplify this check for now or assume backend handles it. But we don't have a specific API for checking conflicts across all users if we are STUDENT (since STUDENT can't fetch all). So we'll skip the frontend check and let it pass or implement an endpoint.
+      const res = await axios.get('/api/borrow-requests'); // In a real app we'd fetch all requests if we have permission, or have a specific API. We'll simplify this check for now or assume backend handles it. But we don't have a specific API for checking conflicts across all users if we are STUDENT (since STUDENT can't fetch all). So we'll skip the frontend check and let it pass or implement an endpoint.
       // For now, let's just create it directly. The backend should ideally check this.
       
       let initialStatus = 'PENDING_TT';
@@ -114,7 +114,7 @@ export default function ResearchBooking() {
          initialStatus = 'PENDING_TEACHER';
       }
 
-      await axios.post('http://localhost:8080/api/borrow-requests', {
+      await axios.post('/api/borrow-requests', {
          assetId: formData.assetId,
          purpose: formData.purpose,
          projectDetails: formData.projectDetails,

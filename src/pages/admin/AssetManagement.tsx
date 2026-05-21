@@ -22,7 +22,7 @@ export default function AssetManagement() {
   const fetchAssets = async () => {
     setLoading(true);
     try {
-      const res = await axios.get('http://localhost:8080/api/assets');
+      const res = await axios.get('/api/assets');
       setAssets(res.data);
     } catch (err) {
       console.error('Lỗi khi tải tài sản:', err);
@@ -45,7 +45,7 @@ export default function AssetManagement() {
       }
       
       // Upload mảng tài sản lên backend
-      await axios.post('http://localhost:8080/api/assets', newlyParsed);
+      await axios.post('/api/assets', newlyParsed);
       
       alert(`Đã upload thành công dữ liệu lên hệ thống!`);
       fetchAssets(); // Tải lại toàn bộ
@@ -61,7 +61,7 @@ export default function AssetManagement() {
       if(!window.confirm("BẠN CÓ CHẮC CHẮN MUỐN XÓA TOÀN BỘ CƠ SỞ DỮ LIỆU TÀI SẢN?")) return;
       
       try {
-         await axios.delete('http://localhost:8080/api/assets/all');
+         await axios.delete('/api/assets/all');
          setAssets([]);
          alert("Đã xóa sạch cơ sở dữ liệu!");
       } catch (err: any) {

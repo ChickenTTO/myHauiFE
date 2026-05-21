@@ -21,7 +21,7 @@ export default function Auth() {
 
     try {
       if (isLogin) {
-        const response = await axios.post('http://localhost:8080/api/auth/login', {
+        const response = await axios.post('/api/auth/login', {
           email,
           password
         });
@@ -31,7 +31,7 @@ export default function Auth() {
         // Tài khoản đăng ký mới mặc định là STUDENT, nếu muốn admin thì chỉnh sửa backend/role
         const assignedRole = email.toLowerCase().includes('admin') ? 'ADMIN1' : 'STUDENT';
         
-        await axios.post('http://localhost:8080/api/auth/register', {
+        await axios.post('/api/auth/register', {
           email,
           password,
           fullName,

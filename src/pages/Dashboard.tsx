@@ -11,7 +11,7 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchTimetables = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/timetables');
+        const response = await axios.get('/api/timetables');
         const timetables = response.data;
         const fetchedData: any = {};
         timetables.forEach((docSnap: any) => {

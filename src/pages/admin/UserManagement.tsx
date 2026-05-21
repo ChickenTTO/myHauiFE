@@ -23,7 +23,7 @@ export default function UserManagement() {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/users');
+      const response = await axios.get('/api/users');
       const userList = response.data;
       
       // Sort PENDING to top
@@ -42,7 +42,7 @@ export default function UserManagement() {
 
   const handleRoleChange = async (userId: number, newRole: string) => {
     try {
-      await axios.put(`http://localhost:8080/api/users/${userId}`, { role: newRole });
+      await axios.put(`/api/users/${userId}`, { role: newRole });
       
       // Update local state
       setUsers(users.map(u => u.id === userId ? { ...u, role: newRole } : u));
@@ -56,7 +56,7 @@ export default function UserManagement() {
 
   const handleApprove = async (userId: number, roleToAssign: string) => {
     try {
-      await axios.put(`http://localhost:8080/api/users/${userId}`, { status: 'APPROVED', role: roleToAssign });
+      await axios.put(`/api/users/${userId}`, { status: 'APPROVED', role: roleToAssign });
       setUsers(users.map(u => u.id === userId ? { ...u, status: 'APPROVED', role: roleToAssign } : u));
       alert('Đã phê duyệt tài khoản!');
     } catch (err: any) {
@@ -73,7 +73,7 @@ export default function UserManagement() {
     if (!window.confirm("Bạn có chắc chắn muốn xóa tài khoản này?")) return;
 
     try {
-      await axios.delete(`http://localhost:8080/api/users/${userId}`);
+      await axios.delete(`/api/users/${userId}`);
       setUsers(users.filter(u => u.id !== userId));
       alert('Đã xóa tài khoản!');
     } catch (err: any) {

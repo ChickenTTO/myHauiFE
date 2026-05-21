@@ -11,7 +11,7 @@ export const logAudit = async (action: string, details: string, userId: string, 
   try {
     // userId ở Node.js là number, nhưng trong context cũ có thể là string uid. 
     // Nếu userId lấy từ context mới thì nó là ID số. Nếu thiếu, gán 1 tạm thời.
-    await axios.post('http://localhost:8080/api/audit-logs', {
+    await axios.post('/api/audit-logs', {
       action,
       details: `${details} (Thực hiện bởi: ${userRole})`,
       userId: Number(userId) || 1

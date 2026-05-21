@@ -21,7 +21,7 @@ export default function ResearchApprovals() {
       let hasDelegatedPower = false;
       // if (userRole === 'TEACHER') { ... check backend for delegation ... }
 
-      const response = await axios.get('http://localhost:8080/api/borrow-requests');
+      const response = await axios.get('/api/borrow-requests');
       let allReqs = response.data;
       
       if (userRole === 'TEACHER' && !hasDelegatedPower) {
@@ -39,7 +39,7 @@ export default function ResearchApprovals() {
   const fetchDelegationInfo = async () => {
     if (isManagement) {
        try {
-           const uSnap = await axios.get('http://localhost:8080/api/users');
+           const uSnap = await axios.get('/api/users');
            setTeachers(uSnap.data.filter((u: any) => u.role === 'TEACHER'));
        } catch (e) {}
        
@@ -56,7 +56,7 @@ export default function ResearchApprovals() {
 
   const handleStatusChange = async (id: number, newStatus: string) => {
     try {
-      await axios.put(`http://localhost:8080/api/borrow-requests/${id}`, {
+      await axios.put(`/api/borrow-requests/${id}`, {
         status: newStatus
       });
       await logAudit('CHANGE_STATUS', `Duyệt phiếu mượn ${id} -> ${newStatus}`, currentUser.id, isDelegatedToMe ? 'DELEGATED_MANAGER' : userRole);
