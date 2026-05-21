@@ -1,4 +1,4 @@
-import * as XLSX from 'xlsx';
+import * as XLSX from 'xlsx/xlsx.mjs';
 
 export const parseTimetableExcel = async (file) => {
   return new Promise((resolve, reject) => {
